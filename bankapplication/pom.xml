@@ -20,6 +20,7 @@
         **/config/*,
         **/dto/*,
         **/entity/*,
+        **/exception/*
         <!-- **/repository/*, -->
         **/service/UtilityServiceImpl.java,
          **/JunittestApplication.java

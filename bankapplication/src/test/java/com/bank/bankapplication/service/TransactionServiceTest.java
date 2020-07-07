@@ -38,20 +38,20 @@ public class TransactionServiceTest {
 		trans.setDate(new Date());
 		trans.setFromAccount(new Long (89789878));
 		trans.setToAccount(new Long (894449878));
-		trans.setTran_type("Debited");
+		trans.setTrantype("Debited");
 		BeanUtils.copyProperties(trans, transdto);
 		
 		Mockito.when(transRepo.save(trans)).thenReturn(trans);
 		transactionService.saveTransaction(transdto);
 		
 		Assert.assertNotNull(transdto);
-		Assert.assertEquals("Debited", transdto.getTran_type());
+		Assert.assertEquals("Debited", transdto.getTrantype());
 		
 	
 	}
 	
 	@Test
-	public void testgettransaction() throws UserNotFoundException{
+	public void testgettransaction() {
 		
 		Transaction trans = new Transaction();
 		TransactionDto transdto = new TransactionDto();
@@ -59,7 +59,7 @@ public class TransactionServiceTest {
 		trans.setDate(new Date());
 		trans.setFromAccount(new Long (89789878));
 		trans.setToAccount(new Long (894449878));
-		trans.setTran_type("Debited");
+		trans.setTrantype("Debited");
 		BeanUtils.copyProperties(trans, transdto);
 		
 		List<TransactionDto> transdtolist = new ArrayList<TransactionDto>();

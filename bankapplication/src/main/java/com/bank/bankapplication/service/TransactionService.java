@@ -1,7 +1,5 @@
 package com.bank.bankapplication.service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.bank.bankapplication.dto.TransactionDto;
 import com.bank.bankapplication.entity.Transaction;
-import com.bank.bankapplication.exception.UserNotFoundException;
 import com.bank.bankapplication.repository.TransactionRepository;
 
 @Service
@@ -28,17 +25,16 @@ public class TransactionService {
 	}
 
 
-	public List<TransactionDto> gettransaction(Long accountNo) throws UserNotFoundException{
+	public List<TransactionDto> gettransaction(Long accountNo) {
 	
-		List<Transaction> translist = new ArrayList<Transaction>();
+		List<Transaction> translist = new ArrayList<>();
 		translist = transRepo.findTop5ByFromAccountOrderByDateDesc(accountNo);
 		
-		if(translist != null) {
+		//if(translist != null) {
 		List<TransactionDto> transDtoList = new ArrayList<>();
 		
 			for(Transaction trans : translist){
 				
-				DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 				trans.setDate(trans.getDate());
 				
 				TransactionDto trnasDto = new TransactionDto();
@@ -46,8 +42,8 @@ public class TransactionService {
 				transDtoList.add(trnasDto);
 			}
 			return transDtoList;
-		}
-		throw new UserNotFoundException("No any transaction from account:"+accountNo);
+	//	}
+	//	throw new UserNotFoundException("No any transaction from account:"+accountNo);
 	}
 	
 }
