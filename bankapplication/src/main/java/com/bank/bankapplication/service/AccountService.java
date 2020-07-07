@@ -51,44 +51,28 @@ public class AccountService {
 	
 	public Transaction transferAmount( Long fromAccount , Long toAccount, Long amount){
 		
-		Account ac = new Account();
-		ac =  accountRepository.findByAccountNo(fromAccount	);
-		Long subtraction = subtraction(ac.getAvailableBalance(), amount);
-		ac.setAvailableBalance(subtraction);
+		
+		Account ac  =  accountRepository.findByAccountNo(fromAccount);
+		long subtractExact = Math.subtractExact(ac.getAvailableBalance(), amount);
+		ac.setAvailableBalance(subtractExact);
 		accountRepository.save(ac);
 		
 		ac =  accountRepository.findByAccountNo(toAccount);
-		Long addition = addition(ac.getAvailableBalance(), amount);
-		ac.setAvailableBalance(addition);
+		long addExact = Math.addExact(ac.getAvailableBalance(), amount);
+		ac.setAvailableBalance(addExact);
 		accountRepository.save(ac);
+		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+		 Date dateobj = new Date();
 		
 		Transaction trans = new Transaction();
 		trans.setAmount(amount);
-		trans.setDate(new Date(getCurrentDate()));
+		trans.setDate(new Date(df.format(dateobj)));
 		trans.setFromAccount(fromAccount);
 		trans.setToAccount(toAccount);
 		trans.setTrantype("Debited");
 		transRepo.save(trans);
 		return trans;
 		
-	}
-	
-	public Long subtraction(Long balance, Long amount){
-		
-		long subtractExact = Math.subtractExact(balance, amount);
-		return subtractExact;
-	}
-	
-	public Long addition (Long balance, Long amount){
-		long addExact = Math.addExact(balance, amount);
-		return addExact;
-	}
-	
-	public String getCurrentDate(){
-		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-		 Date dateobj = new Date();
-		return(df.format(dateobj));
-		  
 	}
 	
 	

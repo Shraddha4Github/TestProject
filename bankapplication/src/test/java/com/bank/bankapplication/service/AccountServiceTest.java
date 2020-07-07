@@ -1,17 +1,19 @@
 package com.bank.bankapplication.service;
 
+import java.util.Date;
+
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.stubbing.OngoingStubbing;
 
 import com.bank.bankapplication.entity.Account;
+import com.bank.bankapplication.entity.Transaction;
 import com.bank.bankapplication.repository.AccountRepository;
+import com.bank.bankapplication.repository.TransactionRepository;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
 public class AccountServiceTest {
@@ -21,12 +23,14 @@ public class AccountServiceTest {
 
 	@Mock
 	AccountRepository accountRepository;
+	@Mock
+	TransactionRepository transRepository;
 	
 	@Test
 	public void testgenerateAccount(){
 		
 		Account account = new Account();
-		account.setAccountNo(accountService.generateRandom());
+		account.setAccountNo(new Long(978678987));
 		account.setAccounttype("Saving Account");
 		account.setAvailableBalance(new Long("10000"));
 		account.setCustid(2);
@@ -38,20 +42,29 @@ public class AccountServiceTest {
 	}
 	
 	@Test	
-	@Ignore
+	
 	public void testTranferamount(){
 		Account account = new Account();
 		account.setAccountid(3);
-		account.setAccountNo(new Long(978678987));
+		account.setAccountNo(new Long(123456789));
 		account.setAccounttype("Saving Account");
-		account.setAvailableBalance(new Long("10000"));
+		account.setAvailableBalance(new Long(1000));
 		account.setCustid(2);
 		
-		Mockito.when(accountRepository.findByAccountNo(new Long(123456))).thenReturn(account);
+		Transaction trans = new Transaction();
+		trans.setAmount(new Long(1000));
+		trans.setDate(new Date());
+		trans.setFromAccount(new Long(123456789));
+		trans.setToAccount(new Long (894449878));
+		trans.setTrantype("Debited");
 		
-		accountService.transferAmount(new Long(123456789), new Long(123456789), new Long(1000));
+		Mockito.when(accountRepository.findByAccountNo(new Long(123456789))).thenReturn(account);
+		Mockito.when(transRepository.save(trans)).thenReturn(trans);
 		
-		System.out.println(account.getAvailableBalance());
+		Transaction transferAmount = accountService.transferAmount(new Long(123456789), new Long(123456789), new Long(1000));
+		
+		//System.out.println(account.getAvailableBalance());
+		Assert.assertNotNull(transferAmount);
 		Assert.assertNotNull(account);
 		
 	}

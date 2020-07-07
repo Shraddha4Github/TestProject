@@ -22,8 +22,7 @@
         **/entity/*,
         **/exception/*
         <!-- **/repository/*, -->
-        **/service/UtilityServiceImpl.java,
-         **/JunittestApplication.java
+       
     </sonar.coverage.exclusions>
 	</properties>
  	
