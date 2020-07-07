@@ -19,14 +19,14 @@ import com.bank.bankapplication.service.CustomerService;
 public class CustomerController {
 
 	@Autowired
-	CustomerService custService;
+	CustomerService customerService;
 	@Autowired
 	AccountService accountService;
 	
 	@PostMapping("/register")
 	public ResponseEntity<String> registeration(@RequestBody CustomerDto custdto){
 		
-		Customer customer = custService.save(custdto);
+		Customer customer = customerService.saveCustomer(custdto);
 		accountService.generateAccount(customer.getId());
 		return new ResponseEntity<String>("Congatulation..! Account created Successfully",HttpStatus.CREATED);
 	}

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.bank.bankapplication.dto.TransactionDto;
 import com.bank.bankapplication.entity.Transaction;
+import com.bank.bankapplication.exception.UserNotFoundException;
 import com.bank.bankapplication.repository.TransactionRepository;
 
 @Service
@@ -28,26 +29,26 @@ public class TransactionService {
 	}
 
 
-	public List<TransactionDto> gettransaction(Long accountNo){
+	public List<TransactionDto> gettransaction(Long accountNo) throws UserNotFoundException{
 	
 		List<Transaction> translist = new ArrayList<Transaction>();
 		translist = transRepo.findTop5ByFromAccountOrderByDateDesc(accountNo);
 		
+		if(translist != null) {
 		List<TransactionDto> transDtoList = new ArrayList<>();
 		
-		for(Transaction trans : translist){
-			
-			System.out.println("from Account :"+trans.getFromAccount());
-			System.out.println("to Account :"+trans.getToAccount());
-			DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-			System.out.println(trans.getDate());
-			trans.setDate(trans.getDate());
-			
-			TransactionDto trnasDto = new TransactionDto();
-			BeanUtils.copyProperties(trans, trnasDto);
-			transDtoList.add(trnasDto);
+			for(Transaction trans : translist){
+				
+				DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+				trans.setDate(trans.getDate());
+				
+				TransactionDto trnasDto = new TransactionDto();
+				BeanUtils.copyProperties(trans, trnasDto);
+				transDtoList.add(trnasDto);
+			}
+			return transDtoList;
 		}
-		return transDtoList;
-		
-}
+		throw new UserNotFoundException("No any transaction from account:"+accountNo);
+	}
+	
 }

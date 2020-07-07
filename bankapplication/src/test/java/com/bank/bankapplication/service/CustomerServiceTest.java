@@ -38,7 +38,7 @@ public class CustomerServiceTest {
 		
 		Mockito.when(customerRepository.save(cust)).thenReturn(cust);
 		
-		customerService.save(custdto);
+		customerService.saveCustomer(custdto);
 		System.out.println(cust.getUsername());
 		Assert.assertNotNull(cust);
 		Assert.assertEquals("sona", cust.getUsername());

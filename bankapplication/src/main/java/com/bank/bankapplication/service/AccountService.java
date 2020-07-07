@@ -35,9 +35,9 @@ public class AccountService {
 		
 		Account account = new Account();
 		account.setAccountNo(generateRandom());
-		account.setAccount_type("Saving Account");
-		account.setAvailable_Balance(new Long(10000));
-		account.setCust_id(CustId);
+		account.setAccounttype("Saving Account");
+		account.setAvailableBalance(new Long("10000"));
+		account.setCustid(CustId);
 		return accountRepository.save(account);
 	}
 	
@@ -57,17 +57,17 @@ public class AccountService {
 	}
 	
 	
-	public void transferAmount( Long fromAccount , Long toAccount, Long amount){
+	public Transaction transferAmount( Long fromAccount , Long toAccount, Long amount){
 		
 		Account ac = new Account();
 		ac =  accountRepository.findByAccountNo(fromAccount	);
-		long subtractExact = Math.subtractExact(ac.getAvailable_Balance(), amount);
-		System.out.println(subtractExact);
-		ac.setAvailable_Balance(subtractExact);
+		Long subtraction = subtraction(ac.getAvailableBalance(), amount);
+		ac.setAvailableBalance(subtraction);
 		accountRepository.save(ac);
 		
 		ac =  accountRepository.findByAccountNo(toAccount);
-		ac.setAvailable_Balance(Math.addExact(ac.getAvailable_Balance(), amount));
+		Long addition = addition(ac.getAvailableBalance(), amount);
+		ac.setAvailableBalance(addition);
 		accountRepository.save(ac);
 		
 		Transaction trans = new Transaction();
@@ -77,8 +77,19 @@ public class AccountService {
 		trans.setToAccount(toAccount);
 		trans.setTran_type("Debited");
 		transRepo.save(trans);
+		return trans;
 		
+	}
+	
+	public Long subtraction(Long balance, Long amount){
 		
+		long subtractExact = Math.subtractExact(balance, amount);
+		return subtractExact;
+	}
+	
+	public Long addition (Long balance, Long amount){
+		long addExact = Math.addExact(balance, amount);
+		return addExact;
 	}
 	
 	public String getCurrentDate(){

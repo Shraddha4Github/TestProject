@@ -10,16 +10,16 @@ public class Account {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer account_id;
+	private Integer accountid;
 	private Long accountNo;
-	private Long available_Balance;
-	private String account_type;
-	private Integer Cust_id;
-	public Integer getAccount_id() {
-		return account_id;
+	private Long availableBalance;
+	private String accounttype;
+	private Integer Custid;
+	public Integer getAccountid() {
+		return accountid;
 	}
-	public void setAccount_id(Integer account_id) {
-		this.account_id = account_id;
+	public void setAccountid(Integer accountid) {
+		this.accountid = accountid;
 	}
 	public Long getAccountNo() {
 		return accountNo;
@@ -27,23 +27,25 @@ public class Account {
 	public void setAccountNo(Long accountNo) {
 		this.accountNo = accountNo;
 	}
-	public Long getAvailable_Balance() {
-		return available_Balance;
+	public Long getAvailableBalance() {
+		return availableBalance;
 	}
-	public void setAvailable_Balance(Long available_Balance) {
-		this.available_Balance = available_Balance;
+	public void setAvailableBalance(Long availableBalance) {
+		this.availableBalance = availableBalance;
 	}
-	public String getAccount_type() {
-		return account_type;
+	public String getAccounttype() {
+		return accounttype;
 	}
-	public void setAccount_type(String account_type) {
-		this.account_type = account_type;
+	public void setAccounttype(String accounttype) {
+		this.accounttype = accounttype;
 	}
-	public Integer getCust_id() {
-		return Cust_id;
+	public Integer getCustid() {
+		return Custid;
 	}
-	public void setCust_id(Integer cust_id) {
-		Cust_id = cust_id;
+	public void setCustid(Integer custid) {
+		Custid = custid;
 	}
+	
+	
 
 }

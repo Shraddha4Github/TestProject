@@ -15,7 +15,7 @@ public class CustomerService {
 	CustomerRepository custrepo;
 	
 	
-	public Customer save(CustomerDto custdto){
+	public Customer saveCustomer(CustomerDto custdto){
 		
 		Customer cust = new Customer();
 		BeanUtils.copyProperties(custdto, cust);

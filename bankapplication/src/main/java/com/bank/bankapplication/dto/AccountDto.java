@@ -2,32 +2,35 @@ package com.bank.bankapplication.dto;
 
 public class AccountDto {
 
-	private Long account_no;
-	private String available_Balance;
-	private String account_type;
-	private Integer Cust_id;
-	public Long getAccount_no() {
-		return account_no;
+	private Long accountNo;
+	private Long availableBalance;
+	private String accounttype;
+	private Integer Custid;
+	public Long getAccountNo() {
+		return accountNo;
 	}
-	public void setAccount_no(Long account_no) {
-		this.account_no = account_no;
+	public void setAccountNo(Long accountNo) {
+		this.accountNo = accountNo;
 	}
-	public String getAvailable_Balance() {
-		return available_Balance;
+	public Long getAvailableBalance() {
+		return availableBalance;
 	}
-	public void setAvailable_Balance(String available_Balance) {
-		this.available_Balance = available_Balance;
+	public void setAvailableBalance(Long availableBalance) {
+		this.availableBalance = availableBalance;
 	}
-	public String getAccount_type() {
-		return account_type;
+	public String getAccounttype() {
+		return accounttype;
 	}
-	public void setAccount_type(String account_type) {
-		this.account_type = account_type;
+	public void setAccounttype(String accounttype) {
+		this.accounttype = accounttype;
 	}
-	public Integer getCust_id() {
-		return Cust_id;
+	public Integer getCustid() {
+		return Custid;
 	}
-	public void setCust_id(Integer cust_id) {
-		Cust_id = cust_id;
+	public void setCustid(Integer custid) {
+		Custid = custid;
 	}
+	
+	
+	
 }

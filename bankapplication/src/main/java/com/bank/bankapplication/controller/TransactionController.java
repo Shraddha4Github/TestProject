@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.bankapplication.dto.TransactionDto;
+import com.bank.bankapplication.exception.UserNotFoundException;
 import com.bank.bankapplication.service.TransactionService;
 
 import ch.qos.logback.core.status.Status;
@@ -23,7 +24,7 @@ public class TransactionController {
 	TransactionService transactionService;
 	
 	@PostMapping("/statements")
-	public ResponseEntity<List<TransactionDto>> getTransactionDetails(@RequestParam Long accountNo){
+	public ResponseEntity<List<TransactionDto>> getTransactionDetails(@RequestParam Long accountNo)throws UserNotFoundException{
 		
 		List<TransactionDto> transdtos = transactionService.gettransaction(accountNo);
 		return new ResponseEntity<List<TransactionDto>> (transdtos ,HttpStatus.OK );
