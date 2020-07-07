@@ -12,20 +12,27 @@ public class Transaction {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer trans_id;
+	private Integer transid;
 	private Long fromAccount;
 	private Long toAccount;
 	private Long amount;
-	private String Tran_type;
+	private String Trantype;
 	private Date date;
 	
-	public Integer getTrans_id() {
-		return trans_id;
-	}
-	public void setTrans_id(Integer trans_id) {
-		this.trans_id = trans_id;
-	}
 	
+	
+	public Integer getTransid() {
+		return transid;
+	}
+	public void setTransid(Integer transid) {
+		this.transid = transid;
+	}
+	public String getTrantype() {
+		return Trantype;
+	}
+	public void setTrantype(String trantype) {
+		Trantype = trantype;
+	}
 	public Long getFromAccount() {
 		return fromAccount;
 	}
@@ -44,12 +51,7 @@ public class Transaction {
 	public void setAmount(Long amount) {
 		this.amount = amount;
 	}
-	public String getTran_type() {
-		return Tran_type;
-	}
-	public void setTran_type(String tran_type) {
-		Tran_type = tran_type;
-	}
+	
 	public Date getDate() {
 		return date;
 	}

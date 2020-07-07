@@ -5,7 +5,8 @@ public class AccountDto {
 	private Long accountNo;
 	private Long availableBalance;
 	private String accounttype;
-	private Integer Custid;
+	private Integer custid;
+	
 	public Long getAccountNo() {
 		return accountNo;
 	}
@@ -24,11 +25,11 @@ public class AccountDto {
 	public void setAccounttype(String accounttype) {
 		this.accounttype = accounttype;
 	}
-	public Integer getCustid() {
-		return Custid;
+	public Integer getcustid() {
+		return custid;
 	}
-	public void setCustid(Integer custid) {
-		Custid = custid;
+	public void setcustid(Integer custid) {
+		this.custid = custid;
 	}
 	
 	

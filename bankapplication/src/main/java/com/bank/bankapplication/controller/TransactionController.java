@@ -14,7 +14,6 @@ import com.bank.bankapplication.dto.TransactionDto;
 import com.bank.bankapplication.exception.UserNotFoundException;
 import com.bank.bankapplication.service.TransactionService;
 
-import ch.qos.logback.core.status.Status;
 
 @RestController
 @RequestMapping("/transactions")

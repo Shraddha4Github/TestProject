@@ -1,9 +1,5 @@
 package com.bank.bankapplication.dto;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class CustomerDto {
 
 	
@@ -21,12 +17,7 @@ public class CustomerDto {
 	public void setAcountType(String acountType) {
 		this.acountType = acountType;
 	}
-	/*public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}*/
+	
 	public String getName() {
 		return name;
 	}

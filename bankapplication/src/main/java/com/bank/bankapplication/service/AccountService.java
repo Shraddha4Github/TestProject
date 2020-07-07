@@ -2,21 +2,13 @@ package com.bank.bankapplication.service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Random;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.bank.bankapplication.dto.AccountDto;
-import com.bank.bankapplication.dto.CustomerDto;
-import com.bank.bankapplication.dto.TransactionDto;
 import com.bank.bankapplication.entity.Account;
-import com.bank.bankapplication.entity.Customer;
 import com.bank.bankapplication.entity.Transaction;
 import com.bank.bankapplication.repository.AccountRepository;
 import com.bank.bankapplication.repository.TransactionRepository;
@@ -75,7 +67,7 @@ public class AccountService {
 		trans.setDate(new Date(getCurrentDate()));
 		trans.setFromAccount(fromAccount);
 		trans.setToAccount(toAccount);
-		trans.setTran_type("Debited");
+		trans.setTrantype("Debited");
 		transRepo.save(trans);
 		return trans;
 		

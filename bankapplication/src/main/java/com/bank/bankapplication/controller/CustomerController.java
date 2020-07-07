@@ -28,14 +28,14 @@ public class CustomerController {
 		
 		Customer customer = customerService.saveCustomer(custdto);
 		accountService.generateAccount(customer.getId());
-		return new ResponseEntity<String>("Congatulation..! Account created Successfully",HttpStatus.CREATED);
+		return new ResponseEntity<>("Congatulation..! Account created Successfully",HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/transfer")
 	public ResponseEntity<String> transfer(@RequestParam long fromAccount , @RequestParam long toAccount, @RequestParam long amount){
 		
 		accountService.transferAmount(fromAccount, toAccount, amount);
-		return new ResponseEntity<String>("Amount tranfer Successfully",HttpStatus.CREATED);
+		return new ResponseEntity<>("Amount tranfer Successfully",HttpStatus.CREATED);
 	}
 	
 }

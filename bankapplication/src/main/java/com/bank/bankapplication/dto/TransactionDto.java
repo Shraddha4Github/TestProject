@@ -7,7 +7,7 @@ public class TransactionDto {
 	private Long fromAccount;
 	private Long toAccount;
 	private Long amount;
-	private String Tran_type;
+	private String Trantype;
 	private Date date;
 	
 	
@@ -30,11 +30,12 @@ public class TransactionDto {
 	public void setAmount(Long amount) {
 		this.amount = amount;
 	}
-	public String getTran_type() {
-		return Tran_type;
+	
+	public String getTrantype() {
+		return Trantype;
 	}
-	public void setTran_type(String tran_type) {
-		Tran_type = tran_type;
+	public void setTrantype(String trantype) {
+		Trantype = trantype;
 	}
 	public Date getDate() {
 		return date;
